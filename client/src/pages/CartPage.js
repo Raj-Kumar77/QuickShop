@@ -60,7 +60,7 @@ const CartPage = () => {
     // razorpay checkout function 
     const checkoutHandler = async (amount) => {
         try {
-            const { data: { key } } = await axios.get('http://localhost:8080/api/getkey')
+            const { data: { key } } = await axios.get(`${process.env.REACT_APP_API}/api/getkey`)
             const { data: { order } } = await axios.post(`${process.env.REACT_APP_API}/api/v1/payment/checkout`, {
                 amount
             })
@@ -73,7 +73,7 @@ const CartPage = () => {
                 description: "Ecommerce Project Transaction",
                 image: "https://cdn.vectorstock.com/i/1000x1000/70/83/shop-store-icon-vector-30737083.webp",
                 order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                callback_url: "http://localhost:8080/api/v1/payment/paymentverification",
+                callback_url: `${process.env.REACT_APP_API}/api/v1/payment/paymentverification`,
                 prefill: {
                     name: auth?.user?.name,
                     email: auth?.user?.email,
