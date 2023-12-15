@@ -33,7 +33,7 @@ export const paymentVerification = async (req, res) => {
             razorpay_signature
         })
                 
-        res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`)
+        res.redirect(`https://quick-shop-frontend-one.vercel.app/paymentsuccess?reference=${razorpay_payment_id}`)
     }else{
         res.status(400).json({
             success: false,
